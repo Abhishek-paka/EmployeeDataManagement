@@ -54,4 +54,10 @@ public class EmployeeRepo implements EmployeeDAO {
 		
 	}
 
+	@Override
+	public boolean isPresent(String id) {
+		if(getDataByID(id) == null || getDataByID(id).isEmpty()) return true;
+		return false;
+	}
+
 }

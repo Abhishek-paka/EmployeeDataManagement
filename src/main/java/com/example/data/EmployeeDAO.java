@@ -1,3 +1,4 @@
+
 package com.example.data;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public interface EmployeeDAO {
 	
 	public void updateByID(Employee employee);
 	
+	public boolean isPresent(String id);
 	
 
 	

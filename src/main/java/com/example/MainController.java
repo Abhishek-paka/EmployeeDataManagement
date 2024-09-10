@@ -105,9 +105,14 @@ public class MainController {
 	
 	@RequestMapping("/updateByID")
 	public ModelAndView updateByID(ModelAndView model, @RequestParam("id") String id) {
-		List<Employee> list = repo.getDataByID(id);
-		model.addObject("EmployeeData", list);
-		model.setViewName("updatePage");
+		if (repo.isPresent(id)x) {
+			List<Employee> list = repo.getDataByID(id);
+			model.addObject("EmployeeData", list);
+			model.setViewName("updatePage");
+		} else {
+			model.addObject("message", "No data found");
+			model.setViewName("message");
+		}
 		
 		return model;
 		
@@ -120,6 +125,7 @@ public class MainController {
 								@RequestParam("email") String email,
 								@RequestParam("contact") long contact,
 								@RequestParam("department") String department) {
+		
 		
 		Employee employee = new Employee(id, name, email, contact, department);
 		
